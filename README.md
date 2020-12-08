@@ -23,6 +23,7 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
+* [My modifications](#my-modifications)
 * [Docker Quickstart](#docker-quickstart)
   * [Building the Docker Image](#building-the-docker-image)
 * [Getting Started](#getting-started)
@@ -37,6 +38,17 @@
 ## About The Project
 
 This is the relay server for CrewLink, an Among Us proximity voice chat program. I am currently hosting a server at `http://54.193.94.35:9736/`, but if you want a more reliable option I would suggest to deploy this repository yourself.
+
+## My Modifications
+
+It's ngrok time, baby 🌚😎
+
+Create a ```.env``` file and add your ngrok auth key as NGROK, like so:
+```
+NGROK=<YOUR KEY HERE>
+```
+
+Discord bot coming soon 😳
 
 ## Deploy to Heroku
 
