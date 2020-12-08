@@ -4,6 +4,11 @@ import socketIO from 'socket.io';
 import Tracer from 'tracer';
 import morgan from 'morgan';
 import publicIp from 'public-ip';
+import * as dotenv from "dotenv";
+import ngrok from 'ngrok';
+
+dotenv.config({ path: '../.env' });
+const ngrokAuth = process.env.NGROK;
 
 const port = parseInt(process.env.PORT || '9736');
 
@@ -96,4 +101,16 @@ server.listen(port);
 (async () => {
 	address = `http://${await publicIp.v4()}:${port}`;
 	logger.info('CrewLink Server started: %s', address);
+	try {
+			const url = await ngrok.connect({
+			proto: 'http',
+			addr: port,
+			authtoken: ngrokAuth,
+			region: 'in',
+		});
+		logger.info('Ngrok address (give to your friends): %s', url.slice(8));
+	} catch(err) {
+		console.error(err);
+		logger.info('Could not establish ngrok connection. Check your Ngrok auth token.');
+	};
 })();
