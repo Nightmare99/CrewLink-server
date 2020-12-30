@@ -44,7 +44,7 @@ This is the relay server for CrewLink, an Among Us proximity voice chat program.
 Optional environment variables:
 
  - `PORT`: Specifies the port that the server runs on. Defaults to `443` if `HTTPS` is enabled, and `9736` if not.
- - `ADDRESS` **(REQUIRED)**: Specifies the server domain
+ - `NGROK` **(REQUIRED)**: Used to get ngrok connection for people to connect to the server.
  - `NAME`: Specifies the server name
  - `HTTPS`: Enables https. You must place `privkey.pem` and `fullchain.pem` in your CWD.
  - `SSLPATH`: Specifies an alternate path to SSL certificates.
@@ -53,12 +53,6 @@ Optional environment variables:
 
 It's ngrok time, baby 🌚😎
 
-Create a ```.env``` file and add your ngrok auth key as NGROK, like so:
-```
-NGROK=<YOUR KEY HERE>
-```
-
-Discord bot coming soon 😳
 
 ## Deploy to Heroku
 
