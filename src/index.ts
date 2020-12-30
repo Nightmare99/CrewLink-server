@@ -52,21 +52,15 @@ app.set('view engine', 'pug')
 app.use(morgan('combined'))
 
 let connectionCount = 0;
-let address = process.env.ADDRESS;
-if (!address) {
-	logger.error('You must set the ADDRESS environment variable.');
-	process.exit(1);
-}
 
 app.get('/', (_, res) => {
-	res.render('index', { connectionCount, address });
+	res.render('index', { connectionCount });
 });
 
 app.get('/health', (req, res) => {
 	res.json({
 		uptime: process.uptime(),
 		connectionCount,
-		address,
 		name: process.env.NAME
 	});
 })
@@ -174,7 +168,6 @@ io.on('connection', (socket: socketIO.Socket) => {
 
 server.listen(port);
 (async () => {
-	logger.info('CrewLink Server started: %s', address);
 	try {
 			const url = await ngrok.connect({
 			proto: 'http',
